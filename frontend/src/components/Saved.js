@@ -1,10 +1,22 @@
-const Saved = () =>{
+import { useEffect, useState } from "react";
 
-    return (
-        <div className="saved">
-            <h1>saved</h1>
-        </div>
-    )
-}
+const Saved = () => {
+  const [savedLengths, setValue] = useState("");
 
-export default Saved
+  const getData = () => {
+    return localStorage.getItem("saved_lengths");
+  };
+
+  useEffect(() => {
+    setValue(getData());
+  }, []);
+
+  return (
+    <div className="saved">
+      <h1>saved</h1>
+      <p>{savedLengths}</p>
+    </div>
+  );
+};
+
+export default Saved;

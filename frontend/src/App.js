@@ -1,13 +1,9 @@
-import Convert from './components/Convert';
-import Saved from './components/Saved';
-
-
+import Convert from "./components/Convert";
 
 function App() {
   return (
     <div className="App">
-      <Convert/>
-      <Saved/>
+      <Convert />
     </div>
   );
 }
