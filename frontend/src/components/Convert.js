@@ -132,7 +132,7 @@ const Convert = () => {
   const handleSaveHeart = (e) => {
     var newLength = {
       value: value,
-      fromUnit: toUnit,
+      fromUnit: fromUnit,
       result: result,
       toUnit: toUnit,
     };
