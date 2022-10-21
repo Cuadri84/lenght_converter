@@ -5,8 +5,8 @@ import { useState } from "react";
 import Saved from "./Saved";
 
 const Convert = () => {
-  const [fromUnit, setFromUnit] = useState("KM");
-  const [toUnit, setToUnit] = useState("MILES");
+  const [fromUnit, setFromUnit] = useState("km");
+  const [toUnit, setToUnit] = useState("miles");
   const [value, setValue] = useState("");
   const [result, setResult] = useState("");
   const [currentConversion, setCurrentConversion] = useState("");
@@ -32,23 +32,23 @@ const Convert = () => {
     setResult("");
     setArrowConversion(value);
     if (value === "1") {
-      setFromUnit("KM");
-      setToUnit("MILES");
+      setFromUnit("km");
+      setToUnit("miles");
     } else if (value === "2") {
-      setFromUnit("MILES");
-      setToUnit("KM");
+      setFromUnit("miles");
+      setToUnit("km");
     } else if (value === "3") {
-      setFromUnit("FT");
-      setToUnit("M");
+      setFromUnit("ft");
+      setToUnit("m");
     } else if (value === "4") {
-      setFromUnit("M");
-      setToUnit("FT");
+      setFromUnit("m");
+      setToUnit("ft");
     } else if (value === "5") {
-      setFromUnit("CM");
-      setToUnit("INCH");
+      setFromUnit("cm");
+      setToUnit("inch");
     } else {
-      setFromUnit("INCH");
-      setToUnit("CM");
+      setFromUnit("inch");
+      setToUnit("cm");
     }
   };
 
@@ -91,38 +91,38 @@ const Convert = () => {
         setCurrentConversion("2");
         setResult(arrowValue);
         setValue(arrowResult);
-        setFromUnit("MILES");
-        setToUnit("KM");
+        setFromUnit("miles");
+        setToUnit("km");
       } else if (currentConversion === "2") {
         setCurrentConversion("1");
         setResult(arrowValue);
         setValue(arrowResult);
-        setFromUnit("KM");
-        setToUnit("MILES");
+        setFromUnit("km");
+        setToUnit("miles");
       } else if (currentConversion === "3") {
         setCurrentConversion("4");
         setResult(arrowValue);
         setValue(arrowResult);
-        setFromUnit("M");
-        setToUnit("FT");
+        setFromUnit("m");
+        setToUnit("ft");
       } else if (currentConversion === "4") {
         setCurrentConversion("3");
         setResult(arrowValue);
         setValue(arrowResult);
-        setFromUnit("FT");
-        setToUnit("M");
+        setFromUnit("ft");
+        setToUnit("m");
       } else if (currentConversion === "5") {
         setCurrentConversion("6");
         setResult(arrowValue);
         setValue(arrowResult);
-        setFromUnit("INCH");
-        setToUnit("CM");
+        setFromUnit("inch");
+        setToUnit("cm");
       } else {
         setCurrentConversion("5");
         setResult(arrowValue);
         setValue(arrowResult);
-        setFromUnit("CM");
-        setToUnit("INCH");
+        setFromUnit("cm");
+        setToUnit("inch");
       }
     }
   };
@@ -144,35 +144,46 @@ const Convert = () => {
 
   return (
     <div>
-      <div className="convert">
-        <h1>convert</h1>
-        <div className="firstRow">
-          <div className="firstHalfFirstRow">
-            <Select
-              className="lengths"
-              options={options}
-              onChange={onSelectedChange}
-              defaultValue={options[0]}
-            />
-            <SwapHorizIcon
-              onClick={handleClickArrows}
-              value={{ arrowConversion, arrowValue }}
-            />
-          </div>
-          <div className="secondHalfFirstRow">
-            <input type="number" value={value} onChange={onValueChange} />
-            <label>{fromUnit}</label>
-          </div>
-        </div>
-        <div className="secondRow">
-          <FavoriteBorderIcon onClick={handleSaveHeart} />
-          <div className="lengths2">
-            <input type="number" value={result} />
-            <label>{toUnit}</label>
-          </div>
-        </div>
+      <div className="navbar">
+        <SwapHorizIcon />
+        <label>unit converter</label>
       </div>
-      {!!savedData && <Saved />}
+      <div className="together">
+        <div className="convert">
+          <h1>convert</h1>
+          <div className="firstRow">
+            <div className="firstHalfFirstRow">
+              <Select
+                className="lengths"
+                options={options}
+                onChange={onSelectedChange}
+                defaultValue={options[0]}
+              />
+              <SwapHorizIcon
+                onClick={handleClickArrows}
+                value={{ arrowConversion, arrowValue }}
+              />
+            </div>
+            <div className="secondHalfFirstRow">
+              <input
+                className="value"
+                type="number"
+                value={value}
+                onChange={onValueChange}
+              />
+              <label>{fromUnit}</label>
+            </div>
+          </div>
+          <div className="secondRow">
+            <FavoriteBorderIcon onClick={handleSaveHeart} />
+            <div className="lengths2">
+              <input className="result" type="number" value={result} />
+              <label>{toUnit}</label>
+            </div>
+          </div>
+        </div>
+        {!!savedData && <Saved />}
+      </div>
     </div>
   );
 };

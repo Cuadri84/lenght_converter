@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import CloseIcon from "@mui/icons-material/Close";
 const Saved = () => {
   const [savedLengths, setValue] = useState("");
 
@@ -14,7 +14,10 @@ const Saved = () => {
   return (
     <div className="saved">
       <h1>saved</h1>
-      <p>{savedLengths}</p>
+      <div className="saved-result">
+        <p>{savedLengths}</p>
+        <CloseIcon />
+      </div>
     </div>
   );
 };
